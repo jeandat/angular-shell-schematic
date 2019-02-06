@@ -1,0 +1,37 @@
+// Define custom variables
+// -----------------------
+
+// Breakpoints
+$mat-xs:600px;
+$mat-sm:960px;
+$mat-md:1280px;
+$mat-lg:1920px;
+$mat-xl:5000px;
+
+// Override include-media $breakpoints variable
+$breakpoints:(
+    'xs': $mat-xs,
+    'sm': $mat-sm,
+    'md': $mat-md,
+    'lg': $mat-lg,
+    'xl': $mat-xl
+);
+
+@import "~include-media/dist/_include-media.scss";
+
+// Navbar
+$navbar-height:5rem;
+
+// Spacing
+$space-s:.2rem;
+$space-m:.5rem;
+$space-l:1rem;
+$space-xl:2rem;
+$space-default:$space-l;
+
+// Fonts
+$body-fonts:'Raleway, Roboto, Lato, "Open Sans", "Helvetica Neue", Arial, sans-serif';
+$title-fonts:'Nunito, #{$body-fonts}';
+
+// Images
+$imageRatio:9 / 16 * 100%;

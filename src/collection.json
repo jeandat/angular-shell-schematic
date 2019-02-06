@@ -1,0 +1,12 @@
+{
+  "name": "angular-shell-schematic",
+  "version": "0.1",
+  "extends": "@schematics/angular",
+  "schematics": {
+    "ng-new": {
+      "description": "A blank schematic.",
+      "factory": "./ng-new/index",
+      "schema": "./ng-new/schema.json"
+    }
+  }
+}

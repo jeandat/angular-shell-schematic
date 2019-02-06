@@ -1,0 +1,37 @@
+{
+  "name": "angular-shell-schematic",
+  "version": "0.1.0",
+  "description": "A blank schematics",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "npm run build && jasmine src/**/*_spec.js",
+    "prerelease": "npm ci && npm run build && npm test",
+    "release": "cross-var npm version $npm_config_new_version -m \"chore: Mark version v%s\"",
+    "postrelease": "git push && git push --tags"
+  },
+  "keywords": [
+    "schematics",
+    "angular",
+    "ng",
+    "new",
+    "workspace",
+    "app",
+    "pwa",
+    "web",
+    "front",
+    "frontend",
+    "webapp",
+    "cli"
+  ],
+  "author": "",
+  "license": "MIT",
+  "schematics": "./src/collection.json",
+  "dependencies": {
+    "@angular-devkit/core": "^7.2.1",
+    "@angular-devkit/schematics": "^7.2.1",
+    "@types/jasmine": "^2.6.0",
+    "@types/node": "^8.0.31",
+    "jasmine": "^2.8.0",
+    "typescript": "~3.2.2"
+  }
+}
