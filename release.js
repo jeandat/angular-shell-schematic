@@ -14,6 +14,7 @@ const cli = meow(`
     Options
       -h  Show help
       --no-ci Skip step 'npm ci'
+      --allow-same-version, -a Allow overwrite of existing version
  
     Examples
       $ ./release.js 0.1.0
@@ -26,8 +27,12 @@ const cli = meow(`
         },
         ci:{
             type:'boolean',
-            alias:'ci',
             default:true
+        },
+        allowSameVersion:{
+            type:'boolean',
+            alias:'a',
+            default:false
         }
     }
 });
@@ -49,7 +54,7 @@ const tasks = new Listr([
     },
     {
         title:'Create version',
-        task:() => execa.shell(`npm version ${newVersion} -m "chore: Mark version v%s"`)
+        task:() => execa.shell(`npm version ${newVersion} ${cli.flags.allowSameVersion ? '--allow-same-version' : ''} -m "chore: Mark version v%s"`)
     },
     {
         title:'Push',
