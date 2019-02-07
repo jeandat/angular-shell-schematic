@@ -1,6 +1,6 @@
 {
   "name": "angular-shell-schematic",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "A blank schematics",
   "scripts": {
     "build": "tsc -p tsconfig.json",
