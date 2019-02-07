@@ -4,10 +4,7 @@
   "description": "A blank schematics",
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "test": "npm run build && jasmine src/**/*_spec.js",
-    "prerelease": "npm ci && npm run build && npm test",
-    "release": "cross-var npm version $npm_config_new_version -m \"chore: Mark version v%s\"",
-    "postrelease": "git push && git push --tags"
+    "test": "npm run build && jasmine src/**/*_spec.js"
   },
   "keywords": [
     "schematics",
@@ -33,5 +30,12 @@
     "@types/node": "^8.0.31",
     "jasmine": "^2.8.0",
     "typescript": "~3.2.2"
+  },
+  "devDependencies": {
+    "@schematics/angular": "^7.3.0",
+    "chalk": "^2.4.2",
+    "execa": "^1.0.0",
+    "listr": "^0.14.3",
+    "meow": "^5.0.0"
   }
 }
