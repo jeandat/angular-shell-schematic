@@ -54,7 +54,7 @@ const tasks = new Listr([
     },
     {
         title:'Create version',
-        task:() => execa.shell(`npm version ${newVersion} ${cli.flags.allowSameVersion ? '--allow-same-version' : ''} -m "chore: Mark version v%s"`)
+        task:() => execa.shell(`npm version ${newVersion} ${cli.flags.allowSameVersion ? '--allow-same-version' : ''} -m "chore: mark version %s"`)
     },
     {
         title:'Push',

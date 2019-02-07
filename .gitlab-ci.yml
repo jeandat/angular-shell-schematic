@@ -17,6 +17,7 @@ before_script:
 stages:
     - build
     - test
+    - deploy
 
 # Build the project in production mode
 build:
@@ -29,3 +30,10 @@ test:
     stage: test
     script:
         - npm ci && npm test
+
+publish:
+    stage: deploy
+    script:
+        - ./publish.js
+    only:
+        - tags
