@@ -1,0 +1,31 @@
+image: node:10
+
+variables:
+    APP: "angular-shell-schematic"
+
+cache:
+    paths:
+        - node_modules
+
+before_script:
+    - node -v
+    - npm -v
+    - which node
+    - which npm
+    - npm install
+
+stages:
+    - build
+    - test
+
+# Build the project in production mode
+build:
+    stage: build
+    script:
+        - npm run build
+
+# Run unit tests and e2e tests
+test:
+    stage: test
+    script:
+        - npm ci && npm test
