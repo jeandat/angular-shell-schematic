@@ -78,7 +78,7 @@ SVG files are referenced in `gulpfile.js`.
 In order to use an icon in a component template:
 
 ```html
-<as-svg-icon icon="menu"></as-svg-icon>
+<<%= prefix %>-svg-icon icon="menu"></<%= prefix %>-svg-icon>
 ```
 
 With this solution it is also possible to use it directly without any wrapper:
@@ -109,7 +109,7 @@ A few remarks:
     - it avoids us a slow download over network of the entire library
     - it allows us to download the icon we need in the form and color we need directly without searching it in node_modules
     - svg icons are downloaded in 24px size and put in `svg` folder
-    - the downloaded file should be renamed to respect `<as-svg-icon>` convention name: `<name>-24px.svg`
+    - the downloaded file should be renamed to respect `<<%= prefix %>-svg-icon>` convention name: `<name>-24px.svg`
     - you can then declare it in `gulpfile.js` and generate again the sprite: `npm run gen:svg-sprite`
 
 ## Dynamic imports

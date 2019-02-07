@@ -15,7 +15,7 @@ import { AppState } from '../store/core.reducer';
 
 
 @Component({
-    selector:'as-home',
+    selector:'<%= prefix %>-home',
     templateUrl:'./home.component.html',
     styleUrls:['./home.component.scss'],
     changeDetection:ChangeDetectionStrategy.OnPush

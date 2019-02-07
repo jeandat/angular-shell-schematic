@@ -4,7 +4,7 @@ import { filter } from 'rxjs/operators';
 
 
 @Component({
-    selector:'as-navbar',
+    selector:'<%= prefix %>-navbar',
     templateUrl:'./navbar.component.html',
     styleUrls:['./navbar.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush

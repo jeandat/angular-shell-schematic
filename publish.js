@@ -28,7 +28,7 @@ const cli = meow(`
 
 if(cli.flags.help) return cli.showHelp(0);
 
-const npmUser = 'jdat82';
+const npmUser = 'jeandat';
 
 const tasks = new Listr([
     {

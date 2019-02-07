@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 @Component({
-    selector:'as-foo',
+    selector:'<%= prefix %>-foo',
     templateUrl:'./foo.component.html',
     styleUrls:['./foo.component.scss'],
     changeDetection:ChangeDetectionStrategy.OnPush

@@ -2,9 +2,9 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
 @Component({
-    selector:'as-root',
+    selector:'<%= prefix %>-root',
     template:`
-        <as-navbar></as-navbar>
+        <<%= prefix %>-navbar></<%= prefix %>-navbar>
         <router-outlet></router-outlet>
     `,
     changeDetection:ChangeDetectionStrategy.OnPush

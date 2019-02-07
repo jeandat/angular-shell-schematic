@@ -4,6 +4,7 @@ import * as path from 'path';
 
 const name = 'foo';
 const title = 'FOO';
+const prefix = 'ap'; // a prefix
 
 const collectionPath = path.join(__dirname, '../collection.json');
 const runner = new SchematicTestRunner('angular-shell-schematic', collectionPath);
@@ -35,6 +36,22 @@ describe('angular-shell-schematic', () => {
         expect(packageFile).not.toBeNull();
         // @ts-ignore
         expect(packageFile.toString('utf8')).toMatch(name);
+    });
+
+    it('should insert prefix in angular.json', () => {
+        const tree = runner.runSchematic('ng-new', {name, title, prefix}, projectTree);
+        const cliConf = tree.read(`${name}/angular.json`);
+        expect(cliConf).not.toBeNull();
+        // @ts-ignore
+        expect(cliConf.toString('utf8')).toMatch(`"prefix": "${prefix}"`);
+    });
+
+    it('should insert computed prefix in angular.json', () => {
+        const tree = runner.runSchematic('ng-new', {name, title}, projectTree);
+        const cliConf = tree.read(`${name}/angular.json`);
+        expect(cliConf).not.toBeNull();
+        // @ts-ignore
+        expect(cliConf.toString('utf8')).toMatch(`"prefix": "${name.substr(0, 2)}"`);
     });
 
 });

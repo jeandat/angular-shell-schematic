@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 
 @Component({
-    selector:'as-not-found',
+    selector:'<%= prefix %>-not-found',
     template:`
         <div class="container">
             <section class="flexbox">

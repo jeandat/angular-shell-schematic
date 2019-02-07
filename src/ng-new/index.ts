@@ -13,6 +13,9 @@ export default function (options:Schema):Rule {
     if(!options.title) {
         options.title = options.name;
     }
+    if(!options.prefix){
+        options.prefix = options.name.substr(0, 2);
+    }
     return () => {
         const templateSource = apply(url('./files'), [
             template({

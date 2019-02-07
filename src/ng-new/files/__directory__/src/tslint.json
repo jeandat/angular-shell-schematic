@@ -4,13 +4,13 @@
         "directive-selector": [
             true,
             "attribute",
-            "as",
+            "<%= prefix %>",
             "camelCase"
         ],
         "component-selector": [
             true,
             "element",
-            "as",
+            "<%= prefix %>",
             "kebab-case"
         ],
     "no-non-null-assertion": false

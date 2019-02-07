@@ -5,7 +5,7 @@
     $foreground:map-get($theme, foreground);
     $background:map-get($theme, background);
 
-    as-navbar {
+    <%= prefix %>-navbar {
         border-bottom:2px solid map-get($foreground, divider);
         a {
             color:map-get($primary, default-contrast);
@@ -21,7 +21,7 @@
     }
 
     @include media('<=xs') {
-        as-navbar {
+        <%= prefix %>-navbar {
             nav {
                 background-color:map-get($background, app-bar);
             }
