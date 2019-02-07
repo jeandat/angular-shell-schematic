@@ -20,7 +20,15 @@
     "webapp",
     "cli"
   ],
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.com:jeandat/tools/angular-shell-schematic.git"
+  },
+  "author": {
+    "name": "Jean DAT",
+    "email": "jean.dat@gmail.com",
+    "url": "https://gitlab.com/jeandat/"
+  },
   "license": "MIT",
   "schematics": "./src/collection.json",
   "dependencies": {
