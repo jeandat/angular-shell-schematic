@@ -8,13 +8,13 @@ It can be used like this:
 
 ```bash
 npm install -g angular-shell-schematic
-ng new <app name> --collection=angular-shell-schematic [--directory=<folder name>] [--title=<some text>]
+ng new <app name> --collection=angular-shell-schematic [--directory=<folder name>] [--title=<some text>] [--prefix=<some prefix>]
 ```
 
 You can show a bit more logs by setting the VERBOSE variable:
 
 ```bash
-VERBOSE=true ng new <app name> --collection=angular-shell-schematic [--directory=<folder name>] [--title=<some text>]
+VERBOSE=true ng new ...
 ```
 
 ## What's in it?
@@ -88,7 +88,7 @@ npm run build -- -w
 To test locally, install `@angular-devkit/schematics-cli` globally and use the `schematics` command line tool. That tool acts the same as the `generate` command of the Angular CLI, but also has a debug mode.
 
 ```bash
-schematics .:ng-new --name=<app name> [--directory=<folder name>] [--title=<some text>]
+schematics .:ng-new --name=<app name> [--directory=<folder name>] [--title=<some text>] [--prefix=<some prefix>]
 ```
 
 Check the documentation with
@@ -101,7 +101,7 @@ schematics --help
 You can debug it with the classic toolkit (chrome devtools or your IDE):
 
 ```bash
-node --inspect-brk $(which schematics) .:ng-new --name=<app name> [--directory=<folder name>] [--title=<some text>]
+node --inspect-brk $(which schematics) .:ng-new --name=<app name> [--directory=<folder name>] [--title=<some text>] [--prefix=<some prefix>]
 ```
 
 With Chrome devtools for instance, you can then go to `chrome://inspect` and start debugging.
