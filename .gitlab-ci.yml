@@ -54,7 +54,9 @@ test-node-11:
 
 publish:
   stage: deploy
-    script:
-        - ./publish.js
   only:
     - tags
+  script:
+    - npm run build
+    - echo '//registry.npmjs.org/:_authToken=${npmToken}'>.npmrc
+    - npm publish
