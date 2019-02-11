@@ -2,10 +2,12 @@
 
 'use strict';
 
-const meow  = require('meow');
+const meow = require('meow');
 const Listr = require('listr');
 const chalk = require('chalk');
 const execa = require('execa');
+
+const Git = require('nodegit');
 
 const cli = meow(`
     Usage
@@ -37,12 +39,36 @@ const cli = meow(`
     }
 });
 
-if(cli.flags.help) return cli.showHelp(0);
+if (cli.flags.help) return cli.showHelp(0);
 
 const newVersion = cli.input[0];
-if(!newVersion) return cli.showHelp(1);
+if (!newVersion) return cli.showHelp(1);
 
 const tasks = new Listr([
+    {
+        title:'Check master is the current branch',
+        task:async (ctx) => {
+            const repo = ctx.repo = await Git.Repository.open('.');
+            const branch = await repo.getCurrentBranch();
+            if (branch.name() !== 'refs/heads/master')
+                throw new Error('Releases are not authorized outside of master');
+        }
+    },
+    {
+        title:'Check absence of local changes',
+        task:async (ctx) => {
+            const changes = await ctx.repo.getStatus();
+            if(changes && changes.length > 0)
+                throw new Error('Working directory is not clean')
+        }
+    },
+    {
+        title:'Check absence of server changes',
+        task: async () => {
+            const {stdout} = await execa.shell('git log master..origin/master');
+            if(stdout.length) throw new Error('Working directory is not in sync with origin');
+        }
+    },
     {
         title:'Reinstall dependencies',
         skip:() => !cli.flags.ci,
