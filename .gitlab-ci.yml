@@ -1,39 +1,60 @@
 image: node:10
 
 variables:
-    APP: "angular-shell-schematic"
+  APP: "angular-shell-schematic"
 
 cache:
-    paths:
-        - node_modules
+  paths:
+    - node_modules
 
 before_script:
-    - node -v
-    - npm -v
-    - which node
-    - which npm
-    - npm install
+  - node -v
+  - npm -v
+  - which node
+  - which npm
+  - npm install
 
 stages:
-    - build
-    - test
-    - deploy
+  - build
+  - test
+  - deploy
 
-# Build the project in production mode
-build:
-    stage: build
-    script:
-        - npm run build
+# Build
 
-# Run unit tests and e2e tests
-test:
-    stage: test
-    script:
-        - npm ci && npm test
+.build:
+  stage: build
+  script:
+    - npm run build
+
+build-node-10:
+  image: node:10
+  extends: .build
+
+build-node-11:
+  image: node:11
+  extends: .build
+
+# Test
+
+.test:
+  stage: test
+  script:
+    - npm ci
+    - npm test
+
+test-node-10:
+  image: node:10
+  extends: .test
+
+test-node-11:
+  image: node:11
+  extends: .test
+
+# Deploy
 
 publish:
-    stage: deploy
+  stage: deploy
     script:
         - ./publish.js
-    only:
-        - tags
+  only:
+    - tags
