@@ -1,3 +1,5 @@
+[![pipeline status](https://gitlab.com/jeandat/tools/angular-shell-schematic/badges/master/pipeline.svg)](https://gitlab.com/jeandat/tools/angular-shell-schematic/commits/master)
+
 # Overview
 
 This repository contains a single schematic usable with angular CLI `ng new…` command.
