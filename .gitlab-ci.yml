@@ -55,8 +55,19 @@ test-node-11:
 publish:
   stage: deploy
   only:
-    - tags
+    variables:
+      - $NEW_VERSION
+  environment:
+    name: production
+    url: https://www.npmjs.com/package/angular-shell-schematic
+  before_script:
+    - git config user.email "$GITLAB_USER_EMAIL"
+    - git config user.name "$GITLAB_USER_NAME"
+    - git remote set-url origin https://jdat:${PERSONAL_ACCESS_TOKEN}@gitlab.com/jeandat/tools/angular-shell-schematic.git
   script:
+    - "npm version $NEW_VERSION -m \"chore: mark version %s\""
+    - git push origin HEAD:master
+    - git push origin --tags
     - npm run build
-    - echo '//registry.npmjs.org/:_authToken=${npmToken}'>.npmrc
+    - echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}'>.npmrc
     - npm publish
