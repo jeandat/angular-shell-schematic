@@ -43,7 +43,10 @@
             "production": {
               "optimization": true,
               "outputHashing": "all",
-              "sourceMap": false,
+              "sourceMap": {
+                "scripts": true,
+                "hidden": true
+              },
               "extractCss": true,
               "namedChunks": false,
               "aot": true,
