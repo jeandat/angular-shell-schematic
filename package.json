@@ -2,6 +2,7 @@
   "name": "angular-shell-schematic",
   "version": "0.5.1",
   "description": "A blank schematics",
+  "npmClient": "yarn",
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "test": "yarn build && jasmine src/**/*_spec.js"

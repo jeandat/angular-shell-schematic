@@ -10,9 +10,11 @@ cache:
 before_script:
   - node -v
   - npm -v
+  - yarn -v
   - which node
   - which npm
-  - npm install
+  - which yarn
+  - yarn --non-interactive
 
 stages:
   - build
@@ -24,7 +26,7 @@ stages:
 .build:
   stage: build
   script:
-    - npm run build
+    - yarn build
 
 build-node-10:
   image: node:10
@@ -39,8 +41,7 @@ build-node-11:
 .test:
   stage: test
   script:
-    - npm ci
-    - npm test
+    - yarn test
 
 test-node-10:
   image: node:10
@@ -65,9 +66,9 @@ publish:
     - git config user.name "$GITLAB_USER_NAME"
     - git remote set-url origin https://jdat:${PERSONAL_ACCESS_TOKEN}@gitlab.com/jeandat/tools/angular-shell-schematic.git
   script:
-    - "npm version $NEW_VERSION -m \"chore: mark version %s\""
+    - "yarn version --new-version=$NEW_VERSION
     - git push origin HEAD:master
     - git push origin --tags
-    - npm run build
+    - yarn build
     - echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}'>.npmrc
-    - npm publish
+    - yarn publish

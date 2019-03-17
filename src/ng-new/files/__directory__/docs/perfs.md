@@ -8,7 +8,7 @@ There is three tools in dev dependencies that may help analyse and understand wh
 You need first to build in production mode with some flags on to generate a few statistics:
 
 ```bash
-npm run build:stats
+yarn build:stats
 ```
 
 Then you may analyse each report with the tool of your choice.
@@ -30,14 +30,14 @@ A few notes:
 - Tree map is zoomable
 
 ```bash
-npm run stats:wba
+yarn stats:wba
 ```
 
 As webpack-bundle-analyser is the most used tool, you can generate statistics and launch WBA in one command with:
 
 ```bash
 # Shorcut
-npm run stats
+yarn stats
 ```
 
 ### source-map-explorer
@@ -49,10 +49,10 @@ More or less like webpack-bundle-analyzer except that:
 - it gives you an incremental percentage value per level of encapsulation
 
 ```bash
-npm run stats:se --bundle=dist/*/styles.*.js
+bundle=dist/*/styles.*.js yarn stats:se
 
 # Works also with CSS
-npm run stats:se --bundle=dist/*/styles.*.css
+bundle=dist/*/styles.*.css yarn stats:se
 ```
 
 ### bundle-buddy
@@ -60,7 +60,7 @@ npm run stats:se --bundle=dist/*/styles.*.css
 Complementary tool that can help find duplicate codes between bundles.
 
 ```bash
-npm run stats:bb
+yarn stats:bb
 ```
 
 ## Icons
@@ -105,12 +105,12 @@ Consequences:
 
 A few remarks:
 
-- icons are downloaded directly from material design icons site and not installed via npm:
+- icons are downloaded directly from material design icons site and not installed via npm/yarn:
     - it avoids us a slow download over network of the entire library
     - it allows us to download the icon we need in the form and color we need directly without searching it in node_modules
     - svg icons are downloaded in 24px size and put in `svg` folder
     - the downloaded file should be renamed to respect `<<%= prefix %>-svg-icon>` convention name: `<name>-24px.svg`
-    - you can then declare it in `gulpfile.js` and generate again the sprite: `npm run gen:svg-sprite`
+    - you can then declare it in `gulpfile.js` and generate again the sprite: `yarn gen:svg-sprite`
 
 ## Dynamic imports
 

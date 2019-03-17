@@ -3,10 +3,10 @@
 ### Configuring an environment
 
 Angular default system being too limited, we are not using several `environment.<name>.ts` files.
-Instead we are generating one dynamically from the command line via an npm script.
+Instead we are generating one dynamically from the command line via a yarn script.
 
 ```bash
-npm run configure -- <flags>
+yarn configure <flags>
 ```
 
 Known flags:
@@ -23,14 +23,14 @@ To set a flag to false, use the `--no-flag` syntax.
 Here is an example that build for prod without mocks, a base name and the default path api:
 
 ```bash
-npm run configure -- --prod --no-mocks --base-name '/<%= name %>'
+yarn configure --prod --no-mocks --base-name '/<%= name %>'
 ```
 
 Flags of type <String> needs to be wrapped in quotes.
 
 ### Build
 
-Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Run `yarn build` to build the project. The build artifacts will be stored in the `dist/` directory.
 Use the `--prod` flag for a production build.
 
 If you configure a base name, don't forget to also set it when building.
@@ -38,30 +38,30 @@ If you configure a base name, don't forget to also set it when building.
 Here is an example for a production build:
 
 ```bash
-npm run configure -- --prod --no-mocks --base-name '/<%= name %>' && npm run build -- --prod --base-href '/<%= name %>'
+yarn configure --prod --no-mocks --base-name '/<%= name %>' && yarn build --prod --base-href '/<%= name %>'
 ```
 
 ### Development server
 
-Run `npm start` for a dev server. Navigate to `http://localhost:4200/`.
+Run `yarn start` for a dev server. Navigate to `http://localhost:4200/`.
 The app will automatically reload if you change any of the source files.
 
 If you configure a base name, don't forget to also set it when serving:
 
 ```bash
-npm run configure -- --base-name '/<%= name %>' && npm start -- --base-href '/<%= name %>'
+yarn configure --base-name '/<%= name %>' && yarn start --base-href '/<%= name %>'
 ```
 
 From time to time, you might also want to start your development server in production mode in order to test performance and load times during development.
 
 ```bash
-npm run start:prod
+yarn start:prod
 ```
 
 Alternatively you can also serve your dist folder after a production build. That is the recommended way if you want to test your service worker:
 
 ```bash
-npm run serve:dist
+yarn serve:dist
 ``` 
 
 ### Code scaffolding
@@ -71,16 +71,16 @@ You can also use `ng generate directive|pipe|service|class|guard|interface|enum|
 
 ### Running unit tests
 
-Run `npm test` to execute unit tests via [Karma] in watch mode (dev).
-Run `npm run test:ci` to execute unit tests via [Karma] in single run mode (ci).
+Run `yarn test` to execute unit tests via [Karma] in watch mode (dev).
+Run `yarn test:ci` to execute unit tests via [Karma] in single run mode (ci).
 
 ### Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Run `yarn e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
 ### Using a reverse proxy
 
-`src/proxy.conf.js` can be used with `npm start` to bypass CORS issues. For now, it is used by default.
+`src/proxy.conf.js` can be used with `yarn start` to bypass CORS issues. For now, it is used by default.
 
 It can also be enabled in `angular.json`.
 
@@ -89,7 +89,7 @@ It can also be enabled in `angular.json`.
     "builder": "@angular-devkit/build-angular:dev-server",
     "options": {
         "browserTarget": "<%= name %>:build",
-        "proxyConfig": "src/proxy.conf.js" <-------------------------- HERE
+        "proxyConfig": "src/proxy.conf.js" <------------------------HERE
     },
     "configurations": {
         "production": {
@@ -103,18 +103,17 @@ It can also be enabled in `angular.json`.
 
 Obviously, the build and tests scripts must work before releasing anything. This is enforced here.
 
-Look at the `prerelease`, `release` and `postrelease` scripts to better understand what is going on.
+Look at the `preversion` and `postversion` scripts to better understand what is going on.
 
 ```bash
-npm run release --new-version=<x.x.x | major | minor | patch | premajor | preminor | prepatch>
+yarn version --new-version=<x.x.x> | --major | --minor | --patch
 ```
 
-Using the `release` script will:
+Using the `version` script will:
 
-1. reinstall all dependencies from scratch to validate a clean install
-2. execute unit tests with this fresh install
-3. mark a release in code by bumping `package.json` and `package-lock.json` version (following SEMVER rules)
-4. create a commit and tag on current branch
+2. execute unit tests
+3. mark a release in code by bumping `package.json` (following SEMVER rules)
+4. create a commit and tag on current branch following pattern `vx.x.x`
 5. push commits and tags to origin
 
 ## Generating docs
@@ -126,13 +125,13 @@ The readme also points to a compodoc generated documentation which might help ne
 To test locally:
 
 ```bash
-npm run serve:docs
+yarn serve:docs
 ```
 
 To generate docs in a `public` folder:
 
 ```bash
-npm run gen:docs
+yarn gen:docs
 ```
 
 ## Service worker
@@ -140,13 +139,13 @@ npm run gen:docs
 If you don't want to generate again a whole production build, you can refresh only the pwa part:
 
 ```bash
-npm run gen:sw
+yarn gen:sw
 ```
 
 You can serve your dist folder in order to test your production build with service worker via:
 
 ```bash
-npm run serve:dist
+yarn serve:dist
 ``` 
 
 ### Further help

@@ -9,7 +9,13 @@ It will generate a new project in replacement of angular CLI default one.
 It can be used like this:
 
 ```bash
+# With Yarn
+yarn global install angular-shell-schematic
+
+# With Npm
 npm install -g angular-shell-schematic
+
+# In a unix-like shell
 ng new <app name> --collection=angular-shell-schematic [--directory=<folder name>] [--title=<some text>] [--prefix=<some prefix>]
 ```
 
@@ -31,20 +37,20 @@ VERBOSE=true ng new ...
     - angular language-service for completion, error hints, … in templates in VS Code and Webstorm
 - Docs:
     - nice starting point in `docs/` folder with several chapters around perfs, build, git commits, coding style guide, etc. => see `docs/`
-    - generation of automatic docs via npm scripts (git book + compodoc) => see `docs/build.md`
+    - generation of automatic docs via yarn scripts (git book + compodoc) => see `docs/build.md`
 - Package:
     - npm dependencies and scripts required for a decent project
 - Perfs:
     - Icons:
-        - npm script to generate an svg sprite => see `docs/perfs.md`
+        - Yarn script to generate an svg sprite => see `docs/perfs.md`
         - Include material icons
     - Bundles:
-        - include npm scripts to use webpack-bundle-analyser, source-maps-explorer and bundle-buddy to better understand what is included in each generated bundle => see `docs/perfs.md`
+        - include yarn scripts to use webpack-bundle-analyser, source-maps-explorer and bundle-buddy to better understand what is included in each generated bundle => see `docs/perfs.md`
 - CI:
     - basic starting point for Gitlab CI
 - Configuration:
     - generate `environment.ts` via a custom script (CLI) that allows much more flexibility than duplicating it and declaring a new environment in `angular.json` => see `docs/build.md`
-    - include a starting point to create a release via npm scripts => see `docs/build.md`
+    - include a starting point to create a release via yarn scripts => see `docs/build.md`
 - Serve:
     - declare a default reverse proxy => see `docs/build.md`
     - include a mock module using angular-in-memory-web-api to allows the frontend and backend team to work concurrently (the backend is emulated in memory) => see `docs/style.md`
@@ -76,13 +82,13 @@ VERBOSE=true ng new ...
 Before testing it locally you need to build (transpile typescript to javascript).
 
 ```bash
-npm run build
+yarn build
 ```
 
 If you want to build automatically after changes, just use `tsc` watch mode:
 
 ```bash
-npm run build -- -w
+yarn build -w
 ```
 
 ### Running locally
@@ -111,16 +117,10 @@ For Webstorm, you will need to create a node debugging task, etc.
 
 ### Unit Testing
 
-`npm run test` will run the unit tests, using Jasmine as a runner and test framework.
+`yarn test` will run the unit tests, using Jasmine as a runner and test framework.
 
 ### Publishing
 
-To publish, simply do:
-
-```bash
-npm run build
-npm run release --new-version=<semver>
-npm publish
-```
+Semver versionning and npmjs publishing is done in gitlab ci via a manual pipeline.
 
 That's it!
