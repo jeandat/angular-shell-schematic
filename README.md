@@ -121,6 +121,6 @@ For Webstorm, you will need to create a node debugging task, etc.
 
 ### Publishing
 
-Semver versionning and npmjs publishing is done in gitlab ci via a manual pipeline.
+Semver versionning and npmjs publishing is done in Gitlab CI via a manual pipeline which takes one env variable as input: NEW_VERSION.
 
 That's it!
