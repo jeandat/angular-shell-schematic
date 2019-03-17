@@ -66,7 +66,7 @@ publish:
     - git config user.name "$GITLAB_USER_NAME"
     - git remote set-url origin https://jdat:${PERSONAL_ACCESS_TOKEN}@gitlab.com/jeandat/tools/angular-shell-schematic.git
   script:
-    - "yarn version --new-version=$NEW_VERSION
+    - yarn version --new-version=$NEW_VERSION
     - git push origin HEAD:master
     - git push origin --tags
     - yarn build
