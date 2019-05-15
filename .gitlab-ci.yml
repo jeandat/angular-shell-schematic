@@ -1,7 +1,7 @@
 image: node:10
 
 variables:
-  APP: "angular-shell-schematic"
+  APP: 'angular-shell-schematic'
 
 cache:
   paths:
@@ -36,6 +36,10 @@ build-node-11:
   image: node:11
   extends: .build
 
+build-node-12:
+  image: node:12
+  extends: .build
+
 # Test
 
 .test:
@@ -49,6 +53,10 @@ test-node-10:
 
 test-node-11:
   image: node:11
+  extends: .test
+
+test-node-12:
+  image: node:12
   extends: .test
 
 # Deploy
