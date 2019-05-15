@@ -1,22 +1,21 @@
 # <%= title %>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.0.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.9.
 
-* [CODING STYLE] — *How to name and organize things*
-* [VCS] — *How to manage git branches, commit, etc.*
-* [CI PLATFORMS] — *What do they do*
-* [RELEASE] — *How to make a release*
-* [BUILD] — *How to use the CLI to build, etc.*
-* [PERFS] — *Things to know when coding*
-* [TODO] - *What we should do and what we will not do*
-* [COMPODOC] - *Technical documentation: modules, components, api, etc.*
+- [CODING STYLE] — _How to name and organize things_
+- [VCS] — _How to manage git branches, commit, etc._
+- [CI PLATFORMS] — _What do they do_
+- [RELEASE] — _How to make a release_
+- [BUILD] — _How to use the CLI to build, etc._
+- [PERFS] — _Things to know when coding_
+- [TODO] - _What we should do and what we will not do_
+- [COMPODOC] - _Technical documentation: modules, components, api, etc._
 
-
-[CODING STYLE]: docs/style.md
-[VCS]: docs/vcs.md
-[CI PLATFORMS]: docs/platforms.md
-[RELEASE]: docs/release.md
-[BUILD]: docs/build.md
-[PERFS]: docs/perfs.md
-[TODO]: docs/todo.md
-[COMPODOC]: public/compodoc/
+[coding style]: docs/style.md
+[vcs]: docs/vcs.md
+[ci platforms]: docs/platforms.md
+[release]: docs/release.md
+[build]: docs/build.md
+[perfs]: docs/perfs.md
+[todo]: docs/todo.md
+[compodoc]: public/compodoc/
