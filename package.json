@@ -1,6 +1,6 @@
 {
   "name": "angular-shell-schematic",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "description": "A blank schematics",
   "npmClient": "yarn",
   "scripts": {
